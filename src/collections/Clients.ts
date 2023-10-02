@@ -1,6 +1,6 @@
 import payload from 'payload';
 import { CollectionConfig } from 'payload/types';
-import { isAdmin, isAdminOrClient } from "../access"
+import { isAdmin } from "../access"
 
 const Client: CollectionConfig = {
     slug: 'clients',

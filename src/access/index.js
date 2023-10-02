@@ -8,3 +8,29 @@ export const isAdmin = (args) => {
 export const isAdminOrCreatedBy = (args) => {
   return true;
 };
+
+export const isAdminOrClient = (args) => {
+  // if (roleIsAdmin(args.req.user)) {
+  //   return true
+  // }
+
+  console.log({ args })
+
+  return true
+}
+
+export const publishedOrLoggedIn = ({ req: { user } }) => {
+  if (user) {
+    return true
+  }
+
+  return {
+    or: [
+      {
+        _status: {
+          equals: 'published',
+        },
+      },
+    ],
+  }
+}

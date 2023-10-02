@@ -24,6 +24,13 @@ const Users: CollectionConfig = {
       required: true,
       defaultValue: 'client',
     },
+    { name: 'firstName', type: 'text', required: true },
+    { name: 'lastName', type: 'text', required: true },
+    { name: 'companyName', type: 'text' },
+    { name: 'email', type: 'email', required: true },
+    { name: 'phone', type: 'text' },
+    { name: 'address', type: 'text' },
+    { name: 'projects', type: 'relationship', relationTo: 'projects', hasMany: true }
   ],
 };
 

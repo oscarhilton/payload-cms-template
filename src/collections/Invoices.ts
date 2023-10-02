@@ -11,9 +11,9 @@ const Invoices: CollectionConfig = {
       },
     fields: [
         { name: 'invoiceNumber', type: 'text', required: true },
-        { name: 'client', type: 'relationship', relationTo: 'clients', required: true },
-        { name: 'dateIssued', type: 'number', required: true },
-        { name: 'dueDate', type: 'number', required: true },
+        { name: 'client', type: 'relationship', relationTo: 'users', required: true },
+        { name: 'dateIssued', type: 'date', required: true },
+        { name: 'dueDate', type: 'date', required: true },
         { name: 'totalAmount', type: 'number', required: true },
         { name: 'status', type: 'select', options: ['Unissued', 'Pending', 'Paid', 'Overdue'], required: true, defaultValue: 'Unissued' },
         { name: 'items', type: 'array', fields: [

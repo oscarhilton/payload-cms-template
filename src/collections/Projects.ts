@@ -1,14 +1,32 @@
 import { CollectionConfig } from 'payload/types';
+import { roleIsAdmin, isAdminOrCreatedBy } from "../access"
 
 const Project: CollectionConfig = {
     slug: 'projects',
+    admin: {
+        useAsTitle: 'projectName'
+    },
+    access: {
+        create: isAdminOrCreatedBy,
+        read: isAdminOrCreatedBy,
+        update: isAdminOrCreatedBy,
+    },
     fields: [
-        { name: 'client', type: 'relationship', relationTo: 'clients', required: true },
-        { name: 'domainName', type: 'text', required: true },
-        { name: 'hostingDetails', type: 'text' },
-        { name: 'status', type: 'select', options: ['In Progress', 'Completed'], required: true },
+        { name: 'projectName', type: 'text', required: true },
+        {
+            name: 'status',
+            type: 'select',
+            options: ['Proposed', 'Queued', 'InProgress', 'Completed'],
+            defaultValue: "Proposed",
+            required: true,
+            admin: {
+                condition: (data, siblingData, { user }) => {
+                    return roleIsAdmin(user)
+                },
+            }
+        },
         { name: 'startDate', type: 'number' },
-        { name: 'dueDate', type: 'number' }
+        { name: 'dueDate', type: 'number' },
     ]
 };
 

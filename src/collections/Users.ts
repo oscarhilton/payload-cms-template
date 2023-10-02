@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import { isAdmin, isAdminOrCreatedBy } from "../access"
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -6,10 +7,24 @@ const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email'
   },
+  access: {
+    create: isAdmin,
+    read: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
   fields: [
-    // Email added by default
-    // Add more fields as needed
-  ]
+    {
+      name: 'role',
+      type: 'select',
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'Client', value: 'client' },
+      ],
+      required: true,
+      defaultValue: 'client',
+    },
+  ],
 };
 
 export default Users;

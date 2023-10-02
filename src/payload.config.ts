@@ -1,8 +1,9 @@
 import { buildConfig } from 'payload/config';
 import path from 'path';
-import Examples from './collections/Examples';
 import Users from './collections/Users';
 import Media from './collections/Media';
+import Clients from './collections/Clients';
+import Projects from './collections/Projects';
 
 const serverURL = process.env.PAYLOAD_PUBLIC_SERVER_URL;
 
@@ -11,7 +12,7 @@ export default buildConfig({
   admin: {
     user: Users.slug
   },
-  collections: [Users, Media, Examples],
+  collections: [Projects, Clients, Users, Media],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
   },

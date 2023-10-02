@@ -7,8 +7,8 @@ const Project: CollectionConfig = {
         { name: 'domainName', type: 'text', required: true },
         { name: 'hostingDetails', type: 'text' },
         { name: 'status', type: 'select', options: ['In Progress', 'Completed'], required: true },
-        { name: 'startDate', type: 'datetime' },
-        { name: 'dueDate', type: 'datetime' }
+        { name: 'startDate', type: 'number' },
+        { name: 'dueDate', type: 'number' }
     ]
 };
 

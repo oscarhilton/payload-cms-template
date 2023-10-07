@@ -1,5 +1,5 @@
 import { CollectionConfig } from 'payload/types';
-import { isAdmin } from "../access"
+import { isAdminOrClient } from "../access"
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -8,10 +8,10 @@ const Users: CollectionConfig = {
     useAsTitle: 'email'
   },
   access: {
-    create: isAdmin,
-    read: isAdmin,
-    update: isAdmin,
-    delete: isAdmin,
+    create: isAdminOrClient,
+    read: isAdminOrClient,
+    update: isAdminOrClient,
+    delete: isAdminOrClient,
   },
   fields: [
     {
@@ -26,8 +26,8 @@ const Users: CollectionConfig = {
     },
     { name: 'firstName', type: 'text', required: true },
     { name: 'lastName', type: 'text', required: true },
-    { name: 'companyName', type: 'text' },
     { name: 'email', type: 'email', required: true },
+    { name: 'companyName', type: 'text' },
     { name: 'phone', type: 'text' },
     { name: 'address', type: 'text' },
     { name: 'projects', type: 'relationship', relationTo: 'projects', hasMany: true }

@@ -21,12 +21,12 @@ const Project: CollectionConfig = {
             options: ['Website', 'App', 'Other'],
         },
         {
-        name: 'website',
-        type: 'relationship',
-        relationTo: 'websites',
-        admin: {
-            condition: (data) => data.type === 'Website',
-        },
+            name: 'website',
+            type: 'relationship',
+            relationTo: 'websites',
+            admin: {
+                condition: (data) => data.type === 'Website',
+            },
         },
         {
             name: 'status',

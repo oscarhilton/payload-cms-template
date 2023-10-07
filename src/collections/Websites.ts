@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 import { isAdminOrClient } from "../access"
 
-const Users: CollectionConfig = {
+const Websites: CollectionConfig = {
   slug: 'websites',
   admin: {
     useAsTitle: 'title',
@@ -24,16 +24,22 @@ const Users: CollectionConfig = {
       required: true,
     },
     {
-        name: 'pages',
-        type: 'relationship',
-        hasMany: true,
-        relationTo: 'pages',
+      name: 'theme',
+      type: 'relationship',
+      relationTo: 'themes',
     },
     {
-        name: 'redirect',
-        type: 'text',
-    }
+      name: 'homepage',
+      type: 'relationship',
+      relationTo: 'pages',
+    },
+    {
+      name: 'pages',
+      type: 'relationship',
+      relationTo: 'pages',
+      hasMany: true,
+    },
   ],
 };
 
-export default Users;
+export default Websites;
